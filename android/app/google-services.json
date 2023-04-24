@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "75134287411",
+    "project_id": "advantdating",
+    "storage_bucket": "advantdating.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75134287411:android:3cf71bfc9529370a0f2d46",
+        "android_client_info": {
+          "package_name": "com.example.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "75134287411-f2u92fqrddt4lsun6a55k9esp03ur3me.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHYdGrPlwFbCmfcQyxsyv6pE-Ky6XeWgQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "75134287411-014jlqn6aga5s8hlmu8j2sbmpfbgv4pd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "75134287411-cudm8tb99pc94v82l93jsfeui34aap9f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.login"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
