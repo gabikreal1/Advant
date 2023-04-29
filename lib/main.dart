@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 import 'package:login/Screens/auth.dart';
-import 'Screens/login.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:login/Screens/login.dart';
+import 'package:login/Screens/register.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'firebase_options.dart';
-import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,16 +17,17 @@ void main() async {
   );
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  runApp(const MyApp());
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'flutterLogin',
       theme: ThemeData(
@@ -37,7 +42,42 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: Auth(),
+      routerDelegate: _router.routerDelegate,
+      routeInformationParser: _router.routeInformationParser,
+      routeInformationProvider: _router.routeInformationProvider,
     );
   }
+
+  final GoRouter _router = GoRouter(
+    routes: <GoRoute>[
+      GoRoute(
+        routes: <GoRoute>[
+          GoRoute(
+            routes: <GoRoute>[],
+            path: 'register',
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              restorationId: state.pageKey.value,
+              child: Register(),
+            ),
+          ),
+          GoRoute(
+            routes: <GoRoute>[],
+            path: 'login',
+            pageBuilder: (context, state) => MaterialPage<void>(
+              key: state.pageKey,
+              restorationId: state.pageKey.value,
+              child: Login(),
+            ),
+          ),
+        ],
+        path: '/',
+        pageBuilder: (context, state) => MaterialPage<void>(
+          key: state.pageKey,
+          restorationId: state.pageKey.value,
+          child: Auth(),
+        ),
+      ),
+    ],
+  );
 }
