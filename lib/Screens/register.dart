@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:login/Components/my_texfield.dart';
 import 'package:login/Components/my_button.dart';
 import 'package:login/Services/auth_service.dart';
@@ -30,7 +30,7 @@ class _RegisterState extends State<Register> {
         passwordCheckController.text);
     Navigator.pop(context);
     if (responseCode == "success") {
-      Get.back();
+      context.pop();
     } else {
       // ignore: use_build_context_synchronously
       registerErrorDialogShower(responseCode, context);
@@ -168,10 +168,8 @@ class _RegisterState extends State<Register> {
                         shape: StadiumBorder(),
                       ),
                       onPressed: () async {
-                        CircularProgressIndicator();
                         await AuthService().signInWithGoogle();
-
-                        Get.back();
+                        context.pop();
                       },
                       child: Row(children: [
                         Image.asset(

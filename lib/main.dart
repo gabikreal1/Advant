@@ -58,7 +58,7 @@ class MyApp extends StatelessWidget {
             pageBuilder: (context, state) => MaterialPage<void>(
               key: state.pageKey,
               restorationId: state.pageKey.value,
-              child: Register(),
+              child: Register().animate().moveY(),
             ),
           ),
           GoRoute(

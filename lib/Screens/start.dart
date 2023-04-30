@@ -1,10 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:login/Screens/login.dart';
 import 'package:login/Components/my_button.dart';
 import 'package:login/Screens/web/web_start.dart';
+import 'package:go_router/go_router.dart';
 
 class Start extends StatefulWidget {
   const Start({super.key});
@@ -18,7 +17,7 @@ class _StartState extends State<Start> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, contraints) {
-        if (contraints.maxWidth < 550) {
+        if (contraints.maxWidth < 500) {
           return Scaffold(
             backgroundColor: Colors.grey[300],
             body: SafeArea(
@@ -41,11 +40,7 @@ class _StartState extends State<Start> {
                         children: [
                           MyButton(
                             text: "SIGN UP",
-                            onTap: () => Get.to(
-                              () => Login(),
-                              transition: Transition.downToUp,
-                              duration: Duration(milliseconds: 350),
-                            ),
+                            onTap: () => context.push("/register"),
                             color: Colors.white,
                             textColor: Colors.black,
                           ),
@@ -53,11 +48,7 @@ class _StartState extends State<Start> {
                           MyButton(
                             color: Colors.black,
                             text: "SIGN IN",
-                            onTap: () => Get.to(
-                              () => Login(),
-                              transition: Transition.downToUp,
-                              duration: Duration(milliseconds: 350),
-                            ),
+                            onTap: () => context.push("/login"),
                           ),
                         ],
                       ),
