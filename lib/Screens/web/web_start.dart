@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:login/Components/my_button.dart';
 import 'package:login/Screens/login.dart';
+import 'package:login/Screens/register.dart';
 
 class webStart extends StatefulWidget {
   const webStart({super.key});
@@ -47,8 +48,8 @@ class _webStartState extends State<webStart> {
                           ),
                           MyButton(
                             onTap: () => Get.to(
-                              () => Login(),
-                              transition: Transition.downToUp,
+                              () => Register(),
+                              transition: Transition.upToDown,
                               duration: Duration(milliseconds: 350),
                             ),
                             text: "SIGN UP",
@@ -57,7 +58,11 @@ class _webStartState extends State<webStart> {
                           ),
                           const SizedBox(height: 10),
                           MyButton(
-                            onTap: () => {},
+                            onTap: () => Get.to(
+                              () => Login(),
+                              transition: Transition.downToUp,
+                              duration: Duration(milliseconds: 350),
+                            ),
                             text: "SIGN IN",
                             color: Colors.black,
                             textColor: Colors.white,
@@ -69,7 +74,7 @@ class _webStartState extends State<webStart> {
                 ),
               ),
             ),
-            Flexible(flex: 2, child: Container())
+            Flexible(flex: 1, child: Container())
           ],
         ),
       ),

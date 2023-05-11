@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:login/Screens/login.dart';
 import 'package:login/Components/my_button.dart';
 import 'package:login/Screens/web/web_start.dart';
+import 'package:login/Screens/register.dart';
 
 class Start extends StatefulWidget {
   const Start({super.key});
@@ -18,7 +19,7 @@ class _StartState extends State<Start> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, contraints) {
-        if (contraints.maxWidth < 550) {
+        if (contraints.maxWidth < 500) {
           return Scaffold(
             backgroundColor: Colors.grey[300],
             body: SafeArea(
@@ -42,8 +43,8 @@ class _StartState extends State<Start> {
                           MyButton(
                             text: "SIGN UP",
                             onTap: () => Get.to(
-                              () => Login(),
-                              transition: Transition.downToUp,
+                              () => Register(),
+                              transition: Transition.upToDown,
                               duration: Duration(milliseconds: 350),
                             ),
                             color: Colors.white,

@@ -1,13 +1,12 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
-import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
 import 'package:login/Components/my_texfield.dart';
 import 'package:login/Components/my_button.dart';
-import 'package:login/Screens/auth.dart';
-import 'package:login/Services/auth_sevice.dart';
+import 'package:login/Screens/forogot_pw.dart';
+import 'package:login/Services/auth_service.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
 class Login extends StatefulWidget {
@@ -20,7 +19,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   Future<void> signUserIn() async {
     //login
-    final responseCode = await AuthSevice()
+    final responseCode = await AuthService()
         .signUserInWithEmail(usernameController.text, passwordController.text);
     if (responseCode == "success") {
       Get.back();
@@ -122,7 +121,8 @@ class _LoginState extends State<Login> {
                     child: GestureDetector(
                       child: Text('Forgot Password?',
                           style: TextStyle(color: Colors.grey[600])),
-                      onTap: () => {},
+                      onTap: () => Get.to(ForgotPasswordPage(),
+                          transition: Transition.rightToLeft, duration: 350.ms),
                     ).animate().slide(delay: 200.ms).fade(),
                   ),
                 ),
@@ -169,8 +169,7 @@ class _LoginState extends State<Login> {
                       ),
                       onPressed: () async {
                         CircularProgressIndicator();
-                        await AuthSevice().signInWithGoogle();
-
+                        await AuthService().signInWithGoogle();
                         Get.back();
                       },
                       child: Row(children: [
