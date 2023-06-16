@@ -5,24 +5,30 @@ import 'package:flutter/material.dart';
 class MyTextField extends StatefulWidget {
   final controller;
   final String hintText;
-  final bool? obscureText;
+  bool obscureText;
   final onSubm;
   final bool? autoFocus;
 
-  const MyTextField(
-      {super.key,
-      required this.controller,
-      required this.hintText,
-      this.obscureText,
-      this.autoFocus,
-      this.onSubm});
+  MyTextField({
+    super.key,
+    required this.controller,
+    required this.hintText,
+    required this.obscureText,
+    this.autoFocus,
+    this.onSubm,
+  });
 
   @override
   State<MyTextField> createState() => _MyTextFieldState();
 }
 
 class _MyTextFieldState extends State<MyTextField> {
-  bool _passwordVisible = true;
+  bool _passwordVisibility = true;
+
+  @override
+  void initstate() {
+    _passwordVisibility = widget.obscureText;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +37,8 @@ class _MyTextFieldState extends State<MyTextField> {
       child: TextFormField(
         autofocus: widget.autoFocus ?? false,
         onFieldSubmitted: (value) => widget.onSubm ?? {},
-        obscureText: _passwordVisible,
+        obscureText:
+            widget.obscureText ? _passwordVisibility : widget.obscureText,
         controller: widget.controller,
         decoration: InputDecoration(
             enabledBorder:
@@ -44,18 +51,18 @@ class _MyTextFieldState extends State<MyTextField> {
             hintStyle: TextStyle(color: Colors.grey[500]),
             labelText: widget.hintText,
             // Here is key idea
-            suffixIcon: widget.obscureText ?? false
+            suffixIcon: widget.obscureText
                 ? IconButton(
                     icon: Icon(
                       // Based on passwordVisible state choose the icon
-                      _passwordVisible
+                      _passwordVisibility
                           ? Icons.visibility_off
                           : Icons.visibility,
                     ),
                     onPressed: () {
                       // Update the state i.e. toogle the state of passwordVisible variable
                       setState(() {
-                        _passwordVisible = !_passwordVisible;
+                        _passwordVisibility = !_passwordVisibility;
                       });
                     },
                   )

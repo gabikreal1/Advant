@@ -31,9 +31,8 @@ class _HomePageState extends State<HomePage> {
     if (!_isEmailVerified.value) {
       FirebaseAuth.instance.currentUser!.sendEmailVerification();
       verificationTimer = Timer.periodic(
-          Duration(seconds: 1), (_) => {changeVerificationTimer()});
-      timer =
-          Timer.periodic(Duration(seconds: 3), (_) => {checkEmailVerified()});
+          Duration(seconds: 1), (_) => changeVerificationTimer());
+      timer = Timer.periodic(Duration(seconds: 3), (_) => checkEmailVerified());
     }
   }
 
@@ -113,6 +112,7 @@ class _HomePageState extends State<HomePage> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25.0),
                             child: MyButton(
+                              padding: 25,
                               onTap: sendVerificationMail,
                               text: "Resend Verification",
                               color: Colors.white,
@@ -124,6 +124,7 @@ class _HomePageState extends State<HomePage> {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 25.0),
                             child: MyButton(
+                              padding: 25,
                               onTap: () => {},
                               text:
                                   "Resend Verification ($_verificationTimerCounter) s",

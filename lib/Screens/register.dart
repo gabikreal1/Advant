@@ -130,9 +130,9 @@ class _RegisterState extends State<Register> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: MyButton(
+                    padding: 25,
                     onTap: signUserUp,
-                    text: "Sign Up",
-                    color: Colors.black,
+                    text: "Create Account",
                   ).animate().slide(delay: 400.ms).fade(),
                 ),
                 const SizedBox(height: 50),

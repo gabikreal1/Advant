@@ -47,6 +47,7 @@ class _webStartState extends State<webStart> {
                             ),
                           ),
                           MyButton(
+                            padding: 25.0,
                             onTap: () => Get.to(
                               () => Register(),
                               transition: Transition.upToDown,
@@ -58,6 +59,7 @@ class _webStartState extends State<webStart> {
                           ),
                           const SizedBox(height: 10),
                           MyButton(
+                            padding: 25.0,
                             onTap: () => Get.to(
                               () => Login(),
                               transition: Transition.downToUp,

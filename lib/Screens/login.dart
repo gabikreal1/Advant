@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
 import 'package:login/Components/my_texfield.dart';
 import 'package:login/Components/my_button.dart';
 import 'package:login/Screens/forogot_pw.dart';
@@ -95,24 +94,36 @@ class _LoginState extends State<Login> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Image.asset(
-                  "assets/splash.png",
-                  width: 100,
-                  height: 100,
+                // Image.asset(
+                // "assets/splash.png",
+                // width: 100,
+                //height: 100,
+                //),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
+                  child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Sign In",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      )),
                 ),
                 const SizedBox(height: 25),
                 MyTextField(
                   controller: usernameController,
                   hintText: 'Email',
                   obscureText: false,
-                ).animate().slide(delay: 100.ms).fade(),
+                ),
                 const SizedBox(height: 10),
                 MyTextField(
                   controller: passwordController,
                   hintText: 'Password',
                   obscureText: true,
                   onSubm: signUserIn,
-                ).animate().slide(delay: 200.ms).fade(),
+                ),
                 const SizedBox(height: 10),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 25),
@@ -123,72 +134,17 @@ class _LoginState extends State<Login> {
                           style: TextStyle(color: Colors.grey[600])),
                       onTap: () => Get.to(ForgotPasswordPage(),
                           transition: Transition.rightToLeft, duration: 350.ms),
-                    ).animate().slide(delay: 200.ms).fade(),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: MyButton(
+                    padding: 25,
                     onTap: signUserIn,
                     text: "Sign In",
-                    color: Colors.black,
-                  ).animate().slide(delay: 300.ms).fade(),
-                ),
-                const SizedBox(height: 50),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey[400],
-                        ),
-                      ),
-                      Text('Or continue with')
-                          .animate()
-                          .slide(delay: 400.ms)
-                          .fade(),
-                      Expanded(
-                        child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey[400],
-                        ),
-                      ).animate().slide(delay: 400.ms).fade(),
-                    ],
                   ),
-                ),
-                const SizedBox(height: 30),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 25),
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        shape: StadiumBorder(),
-                      ),
-                      onPressed: () async {
-                        CircularProgressIndicator();
-                        await AuthService().signInWithGoogle();
-                        Get.back();
-                      },
-                      child: Row(children: [
-                        Image.asset(
-                          "assets/google.png",
-                          width: 25,
-                          height: 25,
-                        ),
-                        Expanded(
-                          child: Center(
-                            child: Text(
-                              "SIGN IN WITH GOOGLE",
-                              style: TextStyle(
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ])).animate().slide(delay: 500.ms).fade(),
                 ),
               ],
             ),

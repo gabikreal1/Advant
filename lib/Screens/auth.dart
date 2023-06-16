@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:login/Screens/create_account/create_account.dart';
 import 'package:login/Screens/home.dart';
 import 'package:login/Screens/login.dart';
 import 'package:login/Screens/register.dart';
@@ -35,8 +36,16 @@ class _AuthState extends State<Auth> {
     if (mounted) {
       Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
       Navigator.push(
+          context, MaterialPageRoute(builder: (context) => CreateAccount()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => CreateAccount()));
+      Navigator.push(
           context, MaterialPageRoute(builder: (context) => Register()));
-      Navigator.push(context, MaterialPageRoute(builder: (context) => Start()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => CreateAccount()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Register()));
       Navigator.push(
         context,
         MaterialPageRoute(

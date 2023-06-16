@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
 import 'package:login/Components/my_texfield.dart';
 import 'package:login/Components/my_button.dart';
 import 'package:login/Services/auth_service.dart';
@@ -95,9 +94,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 35),
               child: MyButton(
-                  onTap: resetPasswordSubm,
-                  text: "Reset Password",
-                  color: Colors.black),
+                padding: 25,
+                onTap: resetPasswordSubm,
+                text: "Reset Password",
+              ),
             )
           ],
         ),
